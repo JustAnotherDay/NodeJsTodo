@@ -1,5 +1,5 @@
 const express = require("express");
-const { getTodos, createTodo } = require("../controllers/todoController");
+const { getTodos, createTodo, updateTodo } = require("../controllers/todoController");
 const router = express.Router();
 const validator = require("../validators/todoValidator");
 
