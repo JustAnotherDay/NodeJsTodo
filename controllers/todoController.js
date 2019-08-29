@@ -12,7 +12,6 @@ exports.getTodos = (req, res) => {
           todos
         });
       })
-      .where()
       .catch(err => {
         console.log("err");
         return res.err;
