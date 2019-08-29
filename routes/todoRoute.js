@@ -5,7 +5,7 @@ const validator = require("../validators/todoValidator");
 
 router.get("/todo", getTodos);
 router.post("/todo/create", validator.createTodoValidator, createTodo);
-router.post("/todo/update", updateTodo);
+router.patch("/todo/update", updateTodo);
 
 
 module.exports = router;
