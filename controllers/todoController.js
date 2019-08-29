@@ -2,11 +2,11 @@ const Todo = require("../models/todoModel");
 
 exports.getTodos = (req, res) => {
   const id = req.body.id;
-  const isDone = req.query.isDone ? req.query.isDone : false ;
+  const queryFilters = req.query;
 
   if (id) {
     //if ID is provided find by id
-    const todo = Todo.find({$and: [{id: id}, {isDone: isDone}]})
+    const todo = Todo.find({id})
       .then(todos => {
         res.json({
           todos
@@ -17,8 +17,7 @@ exports.getTodos = (req, res) => {
         return res.err;
       });
   } else {
-
-    const todo = Todo.find({isDone: isDone})
+    const todo = Todo.find({...queryFilters})
       .then(todos => {
         res.json({
           todos
