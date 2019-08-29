@@ -28,12 +28,10 @@ exports.createTodo = (req, res) => {
 exports.updateTodo = (req, res) => {
   console.log("UPDATING TODO", req.body);
 
-  const id = req.body._id;
-  console.log(id);
-
   const newTodo = req.body;
+  
   console.log(newTodo);
-  const todo = Todo.findOneAndUpdate({_id : id.toString()}, { $set: { newTodo } }, { new: true }, (err, doc) =>{
+  const todo = Todo.findOneAndUpdate({ _id : newTodo._id}, { newTodo }, { upsert: true, new: true }, (err, doc) =>{
     return res.json({
       todo: doc
     });
