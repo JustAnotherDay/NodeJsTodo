@@ -2,14 +2,17 @@ const Todo = require("../models/todoModel");
 
 exports.getTodos = (req, res) => {
   const id = req.body.id;
+  const isDone = req.query.isDone;
+
   if (id) {
     //if ID is provided find by id
-    const todo = Todo.findById(id)
+    const todo = Todo.find({$and: [{id: id}, {isDone: isDone}]})
       .then(todos => {
         res.json({
           todos
         });
       })
+      .where()
       .catch(err => {
         console.log("err");
         return res.err;
