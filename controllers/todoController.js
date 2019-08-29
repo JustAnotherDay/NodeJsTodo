@@ -26,7 +26,7 @@ exports.createTodo = (req, res) => {
 };
 
 exports.updateTodo = (req, res) => {
-  const todo = req.body;
+  const todo = new Todo(req.body);
   console.log(req);
   console.log("UPDATING TODO", req.body);
   todo.save()
