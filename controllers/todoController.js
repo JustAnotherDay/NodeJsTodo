@@ -2,7 +2,7 @@ const Todo = require("../models/todoModel");
 
 exports.getTodos = (req, res) => {
   const id = req.body.id;
-  const isDone = req.query.isDone;
+  const isDone = req.query.isDone ? req.query.isDone : false ;
 
   if (id) {
     //if ID is provided find by id
@@ -18,6 +18,7 @@ exports.getTodos = (req, res) => {
         return res.err;
       });
   } else {
+
     const todo = Todo.find({isDone: isDone})
       .then(todos => {
         res.json({
