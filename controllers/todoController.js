@@ -2,12 +2,12 @@ const Todo = require("../models/todoModel");
 
 exports.getTodos = (req, res) => {
   console.log("RETRIEVING TODO", req.body);
-  const queryFilters = req.query;
+  var queryFilters = req.query;
   const id = req.params.id;
   console.log(queryFilters);
 
   if(id)
-    queryFilters.push({ _id : id });
+    queryFilters._id = id;
 
   Todo.find({...queryFilters})
   .then(todos => {
