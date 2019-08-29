@@ -31,12 +31,13 @@ exports.updateTodo = (req, res) => {
   console.log("UPDATING TODO", req.body);
   todo.save()
     .then(result => {
-    return res.json({
-      todo: result
+      return res.json({
+        todo: result
+      });
     })
     .catch(err => {
       console.log("err");
       return res.err;
-    });
+    
   });
 };
