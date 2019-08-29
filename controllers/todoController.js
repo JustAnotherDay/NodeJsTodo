@@ -29,9 +29,14 @@ exports.updateTodo = (req, res) => {
   const todo = req.body;
   console.log(req);
   console.log("UPDATING TODO", req.body);
-  todo.save().then(result => {
+  todo.save()
+    .then(result => {
     return res.json({
       todo: result
+    })
+    .catch(err => {
+      console.log("err");
+      return res.err;
     });
   });
 };
