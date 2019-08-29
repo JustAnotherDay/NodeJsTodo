@@ -18,7 +18,7 @@ exports.getTodos = (req, res) => {
         return res.err;
       });
   } else {
-    const todo = Todo.find()
+    const todo = Todo.find({isDone: isDone})
       .then(todos => {
         res.json({
           todos
