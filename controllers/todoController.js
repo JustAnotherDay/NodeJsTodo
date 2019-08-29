@@ -34,7 +34,7 @@ exports.updateTodo = (req, res) => {
   const newTodo = req.body;
   const todo = Todo.findOneAndUpdate(id, {newTodo}, { new: true }, (err, doc) =>{
     return res.json({
-      todo: result
+      todo: doc
     });
   });
 
