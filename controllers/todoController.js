@@ -29,6 +29,8 @@ exports.updateTodo = (req, res) => {
   console.log("UPDATING TODO", req.body);
 
   const id = req.body._id;
+  console.log(id);
+  
   const newTodo = req.body;
   console.log(newTodo);
   const todo = Todo.findOneAndUpdate({_id : id}, { $set: { newTodo } }, { new: true }, (err, doc) =>{
