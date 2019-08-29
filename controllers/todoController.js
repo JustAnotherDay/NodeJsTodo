@@ -4,6 +4,8 @@ exports.getTodos = (req, res) => {
   console.log("RETRIEVING TODO", req.body);
   const queryFilters = req.query;
   const id = req.params.id;
+  console.log(req.params);
+  
   if(id)
     queryFilters.push({ _id : id });
 
