@@ -17,16 +17,21 @@ db.on("error", console.error.bind(console, "ERROR DB Connection : "));
 db.once("open", function() {
   // we're connected!
   console.log("SUCCESS DB Connection");
+
+  //start listening 
+
+  //middleware
+  app.use(morgan("dev"));
+  app.use(bodyParser.json());
+  app.use(expressValidator());
+  app.use("/", todoRoutes);
+
+  const port = process.env.PORT || 8080;
+
+  app.listen(port, () => {
+    console.log(`A Node JS is listening in port ${port}`);
+  });
+
+
 });
 
-//middleware
-app.use(morgan("dev"));
-app.use(bodyParser.json());
-app.use(expressValidator());
-app.use("/", todoRoutes);
-
-const port = process.env.PORT || 8080;
-
-app.listen(port, () => {
-  console.log(`A Node JS is listening in port ${port}`);
-});
