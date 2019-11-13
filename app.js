@@ -10,6 +10,7 @@ const expressValidator = require("express-validator");
 
 //routes
 const todoRoutes = require("./routes/todoRoute");
+const userRoutes = require("./routes/userRoute");
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
 var db = mongoose.connection;
@@ -23,10 +24,13 @@ db.once("open", function() {
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(expressValidator());
+app.use("/", userRoutes);
 app.use("/", todoRoutes);
 
 const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
-  console.log(`A Node JS is listening in port ${port}`);
+  console.log(
+    `A Node JS is listening in port ${port} environment=${process.env.NODE_ENV}`
+  );
 });
