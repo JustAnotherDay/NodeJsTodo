@@ -3,10 +3,16 @@ const app = express();
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
+var cors = require('cors')
+
 dotenv.config();
 
 const bodyParser = require("body-parser");
 const expressValidator = require("express-validator");
+
+//cors
+app.use(cors());
+
 
 //routes
 const todoRoutes = require("./routes/todoRoute");
