@@ -33,6 +33,7 @@ app.use(expressValidator());
 app.use("/", userRoutes);
 app.use("/", todoRoutes);
 
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(
